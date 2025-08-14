@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre a Banda Tempo Livre</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="../style.css">
+      <script defer src="../script.js"></script>
+    <style>
+
+        body{
+            background-color: #121212;
+        }
+
+        p{
+            color: white;
+        }
+        /* Estilos específicos para a página Sobre */
+        .about-hero {
+            background: linear-gradient(rgba(3, 35, 66, 0.8), rgba(3, 35, 66, 0.6)), 
+                        url('https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center;
+            background-size: cover;
+            height: 60vh;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        
+        .about-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .about-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+        }
+        
+        .about-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .about-content-section {
+            padding: 5rem 0;
+        }
+        
+        .about-text-block {
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            text-align: center;
+        }
+        
+        .about-text-block p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+        
+        .about-image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .about-image-card {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            position: relative;
+            aspect-ratio: 4/3;
+        }
+        
+        .about-image-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .about-image-card:hover img {
+            transform: scale(1.05);
+        }
+        
+        .logo-showcase {
+            text-align: center;
+            margin: 4rem 0;
+            padding: 2rem 0;
+            background-color: rgba(3, 35, 66, 0.05);
+            border-radius: var(--border-radius);
+        }
+        
+        .logo-showcase img {
+            max-width: 300px;
+            height: auto;
+            margin: 0 auto;
+        }
+        
+        @media (max-width: 768px) {
+            .about-hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .about-hero p {
+                font-size: 1rem;
+            }
+            
+            .about-text-block p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="../index.html" class="logo" aria-label="Logo da Banda Tempo Livre">
+                    <img src="../Logo Marca - BANDA TEMPO LIVRE PRODUÇÕES.png" alt="Logo da Banda Tempo Livre">
+                </a>
+                
+                <button class="menu-toggle" aria-label="Abrir menu">
+                    <span class="hamburger"></span>
+                </button>
+                
+                <ul class="nav-list">
+                    <li><a href="../index.html" aria-label="Página Inicial">Home</a></li>
+                    <li><a href="../experiencias/index.html" aria-label="Experiências da Banda">Experiências</a></li>
+                    <li><a href="../producoes/index.html" aria-label="Producões">Produções</a></li>
+                    <li><a href="#contatos" aria-label="Informações de Contato">Contatos</a></li>
+                
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="about-hero">
+            <div class="about-hero-content animate__animated animate__fadeIn">
+                <h1>Sobre a Banda Tempo Livre</h1>
+                <p>28 anos transformando eventos em experiências inesquecíveis</p>
+            </div>
+        </section>
+
+        <!-- About Content -->
+        <section class="about-content-section">
+            <div class="container">
+                <div class="about-text-block">
+                    <p>A Banda Tempo Livre é referência no cenário musical de festas e eventos, trazendo alegria e emoção para pistas de dança há 28 anos.</p>
+                </div>
+                
+                <!-- Primeiro bloco de imagens -->
+                <div class="about-image-grid">
+                    <div class="about-image-card animate__animated animate__fadeInLeft">
+                        <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Banda em show ao vivo">
+                    </div>
+                    <div class="about-image-card animate__animated animate__fadeInRight">
+                        <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Público dançando">
+                    </div>
+                </div>
+                
+                <div class="about-text-block">
+                    <p>Composta por músicos profissionais e altamente qualificados, a banda é especialista em tocar todos os estilos musicais, garantindo que cada apresentação seja personalizada e repleta de energia para atender ao gosto e ao ritmo de cada público.</p>
+                </div>
+                
+                <!-- Logo da banda -->
+                <div class="logo-showcase animate__animated animate__zoomIn">
+                    <img src="../Logo Marca - BANDA TEMPO LIVRE PRODUÇÕES.png" alt="Logo Banda Tempo Livre">
+                </div>
+                
+                <div class="about-text-block">
+                    <p>A estrutura da Banda Tempo Livre é um espetáculo à parte: som de alta qualidade, iluminação impecável e efeitos visuais de tirar o fôlego, tudo pensado para transformar qualquer evento em uma experiência inesquecível.</p>
+                </div>
+                
+                <!-- Segundo bloco de imagens -->
+                <div class="about-image-grid">
+                    <div class="about-image-card animate__animated animate__fadeInLeft">
+                        <img src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Show com iluminação profissional">
+                    </div>
+                    <div class="about-image-card animate__animated animate__fadeInRight">
+                        <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Show em grande evento">
+                    </div>
+                </div>
+                
+                <div class="about-text-block">
+                    <p>Seja em casamentos, formaturas, aniversários ou eventos corporativos, a Banda Tempo Livre se destaca por sua versatilidade e comprometimento com a diversão e o sucesso de cada festa, sendo a escolha perfeita para quem busca excelência e animação de ponta.</p>
+                </div>
+            
+            </div>
+        </section>
+    </main>
+
+    <footer id="contatos" class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="../Logo Marca - BANDA TEMPO LIVRE PRODUÇÕES.png" alt="Logo da Banda Tempo Livre" class="footer-logo">
+                    <p class="footer-slogan">Música que transforma momentos em memórias.</p>
+                    <div class="footer-social">
+                        <h4>Siga-nos</h4>
+                        <div class="social-links">
+                            <a href="https://www.instagram.com/bandatempolivre/" target="_blank" rel="noopener noreferrer" aria-label="Instagram da Banda Tempo Livre">
+                                <img src="../insta.png" alt="Instagram">
+                            </a>
+                            <a href="https://www.facebook.com/showtempolivre" target="_blank" rel="noopener noreferrer" aria-label="Facebook da Banda Tempo Livre">
+                                <img src="../face.png" alt="Facebook">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-contact">
+                    <h4>Contato</h4>
+                    <ul class="contact-list">
+                        <li><span class="material-icons">phone</span> (14) 99761-2219</li>
+                        <li><span class="material-icons">phone</span> (14) 99750-4349</li>
+                        <li><span class="material-icons">email</span> contato@bandatempolivre.com</li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="index.html">Sobre</a></li>
+                        <li><a href="../integrantes/index.html">Integrantes</a></li>
+                        <li><a href="../cliente/index.php">Experiências</a></li>
+                        <li><a href="../index.html#contatos">Contato</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Banda Tempo Livre. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Script para animações ao scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const animateElements = document.querySelectorAll('.animate__animated');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        const animation = entry.target.getAttribute('data-animate');
+                        entry.target.classList.add(animation);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            animateElements.forEach(element => {
+                element.style.opacity = 0;
+                const animationClass = Array.from(element.classList).find(cls => cls.startsWith('animate__'));
+                if (animationClass) {
+                    element.setAttribute('data-animate', animationClass);
+                    element.classList.remove(animationClass);
+                }
+                observer.observe(element);
+            });
+        });
+    </script>
+</body>
+</html>
