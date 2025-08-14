@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiências - Banda Tempo Livre</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        
+        body{
+            background-color: #121212;
+        }
+
+        p{
+            color: white;
+        }
+
+        
+        /* Estilos específicos para a página de Experiências */
+        .experiences-hero {
+            position: relative;
+            height: 50vh;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(rgba(3, 35, 66, 0.8), rgba(3, 35, 66, 0.6)), 
+                        url('https://images.unsplash.com/photo-1468164016595-6108e4c60c8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center;
+            background-size: cover;
+            color: white;
+            text-align: center;
+        }
+        
+        .experiences-hero-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            padding: 2rem;
+        }
+        
+        .experiences-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .experiences-hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        .experiences-section {
+            padding: 5rem 0;
+        }
+        
+        .event-filter {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+        
+        .filter-button {
+            padding: 0.5rem 1.5rem;
+            background-color: var(--gray-light);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+        
+        .filter-button.active,
+        .filter-button:hover {
+            background-color: var(--accent-color);
+            color: white;
+        }
+        
+        .experiences-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .experience-card {
+            background: rgb(1, 20, 105);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+        
+        .experience-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .experience-image {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .experience-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .experience-card:hover .experience-image img {
+            transform: scale(1.1);
+        }
+        
+        .experience-content {
+            padding: 1.5rem;
+        }
+        
+        .experience-type {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        .experience-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+        
+        .experience-date {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .experience-date .material-icons {
+            font-size: 1rem;
+        }
+        
+        .experience-description {
+            color: white;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .testimonial {
+            padding: 1rem;
+            background-color: rgba(255, 107, 107, 0.1);
+            border-left: 3px solid var(--accent-color);
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            font-style: italic;
+            position: relative;
+        }
+        
+        .testimonial::before {
+            content: '"';
+            position: absolute;
+            top: 0.5rem;
+            left: 0.5rem;
+            font-size: 2rem;
+            color: rgba(255, 107, 107, 0.3);
+            font-family: serif;
+        }
+        
+        .testimonial-author {
+            margin-top: 0.5rem;
+            font-weight: 600;
+            text-align: right;
+            color: var(--primary-color);
+        }
+        
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-color);
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            .experiences-hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .experiences-hero p {
+                font-size: 1rem;
+            }
+            
+            .experiences-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="../index.html" class="logo" aria-label="Logo da Banda Tempo Livre">
+                    <img src="../Logo Marca - BANDA TEMPO LIVRE PRODUÇÕES.png" alt="Logo da Banda Tempo Livre">
+                </a>
+                
+                <button class="menu-toggle" aria-label="Abrir menu">
+                    <span class="hamburger"></span>
+                </button>
+                
+                <ul class="nav-list">
+                    <li><a href="../index.html" aria-label="Página Inicial">Home</a></li>
+                    <li><a href="../sobre/index.html" aria-label="Sobre a Banda">Sobre</a></li>
+                    <li><a href="../producoes/index.html" aria-label="Producões">Produções</a></li>
+                    <li><a href="#contatos" aria-label="Informações de Contato">Contatos</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="experiences-hero">
+            <div class="experiences-hero-content animate__animated animate__fadeIn">
+                <h1>Nossas Experiências</h1>
+                <p>28 anos criando momentos inesquecíveis em eventos especiais</p>
+            </div>
+        </section>
+
+        <!-- Experiences Section -->
+        <section class="experiences-section">
+            <div class="container">
+                <div class="event-filter">
+                    <button class="filter-button active" data-filter="all">Todos</button>
+                    <button class="filter-button" data-filter="casamento">Casamentos</button>
+                    <button class="filter-button" data-filter="formatura">Formaturas</button>
+                    <button class="filter-button" data-filter="aniversario">Aniversários</button>
+                    <button class="filter-button" data-filter="corporativo">Eventos Corporativos</button>
+                </div>
+                
+                <div class="experiences-grid">
+                    <!-- Casamento 1 -->
+                    <div class="experience-card" data-category="casamento">
+                        <div class="experience-image">
+                            <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Casamento Ana e Carlos">
+                        </div>
+                        <div class="experience-content">
+                            <span class="experience-type">Casamento</span>
+                            <h3 class="experience-title">Ana e Carlos</h3>
+                            <div class="experience-date">
+                                <span class="material-icons">event</span>
+                                <span>15 de Novembro, 2023</span>
+                            </div>
+                            <p class="experience-description">A Banda Tempo Livre transformou nossa festa em um verdadeiro conto de fadas. O repertório personalizado fez todos dançarem a noite toda, criando memórias que guardaremos para sempre.</p>
+                            <div class="testimonial">
+                                <p>Não poderíamos ter escolhido melhor! A energia da banda contagiou todos os convidados e fez do nosso dia ainda mais especial.</p>
+                                <p class="testimonial-author">- Ana, a noiva</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Formatura 1 -->
+                    <div class="experience-card" data-category="formatura">
+                        <div class="experience-image">
+                            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Formatura Medicina 2023">
+                        </div>
+                        <div class="experience-content">
+                            <span class="experience-type">Formatura</span>
+                            <h3 class="experience-title">Turma de Medicina 2023</h3>
+                            <div class="experience-date">
+                                <span class="material-icons">event</span>
+                                <span>2 de Dezembro, 2023</span>
+                            </div>
+                            <p class="experience-description">Depois de anos de estudo, nossa formatura merecia uma celebração à altura. A Banda Tempo Livre capturou perfeitamente nosso espírito e animou a festa até o amanhecer.</p>
+                            <div class="testimonial">
+                                <p>Eles tocaram TUDO que pedimos! Desde os clássicos que nossos pais amam até os hits que marcaram nossa jornada na faculdade.</p>
+                                <p class="testimonial-author">- Dr. Lucas, formando</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Corporativo 1 -->
+                    <div class="experience-card" data-category="corporativo">
+                        <div class="experience-image">
+                            <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Evento Corporativo TechSolutions">
+                        </div>
+                        <div class="experience-content">
+                            <span class="experience-type">Evento Corporativo</span>
+                            <h3 class="experience-title">TechSolutions Annual Party</h3>
+                            <div class="experience-date">
+                                <span class="material-icons">event</span>
+                                <span>10 de Outubro, 2023</span>
+                            </div>
+                            <p class="experience-description">Nossa festa anual para 300 colaboradores ganhou vida com a Banda Tempo Livre. Eles adaptaram o repertório para nosso público multicultural, unindo todos na pista de dança.</p>
+                            <div class="testimonial">
+                                <p>Pela primeira vez em 10 anos, vi nosso CEO dançando! A banda superou todas as expectativas.</p>
+                                <p class="testimonial-author">- Mariana, RH TechSolutions</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Aniversário 1 -->
+                    <div class="experience-card" data-category="aniversario">
+                        <div class="experience-image">
+                            <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Aniversário 50 anos">
+                        </div>
+                        <div class="experience-content">
+                            <span class="experience-type">Aniversário</span>
+                            <h3 class="experience-title">Festa de 50 anos</h3>
+                            <div class="experience-date">
+                                <span class="material-icons">event</span>
+                                <span>5 de Agosto, 2023</span>
+                            </div>
+                            <p class="experience-description">Para comemorar meio século de vida, quisemos uma festa que representasse todas as fases da nossa história. A Banda Tempo Livre fez uma viagem no tempo musical que emocionou a todos.</p>
+                            <div class="testimonial">
+                                <p>Desde os anos 70 até os hits atuais, cada música foi escolhida a dedo. Meus amigos ainda comentam sobre como foi a melhor festa que já foram!</p>
+                                <p class="testimonial-author">- Roberto, aniversariante</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Casamento 2 -->
+                    <div class="experience-card" data-category="casamento">
+                        <div class="experience-image">
+                            <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Casamento Marina e Rafael">
+                        </div>
+                        <div class="experience-content">
+                            <span class="experience-type">Casamento</span>
+                            <h3 class="experience-title">Marina e Rafael</h3>
+                            <div class="experience-date">
+                                <span class="material-icons">event</span>
+                                <span>22 de Abril, 2023</span>
+                            </div>
+                            <p class="experience-description">Nosso casamento na praia ganhou a trilha sonora perfeita com a Banda Tempo Livre. Eles capturaram exatamente o clima descontraído e romântico que imaginávamos.</p>
+                            <div class="testimonial">
+                                <p>Quando 'Thinking Out Loud' começou a tocar, com o pôr do sol de fundo, foi mágico! Todos os convidados ficaram impressionados.</p>
+                                <p class="testimonial-author">- Marina, a noiva</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Formatura 2 -->
+                    <div class="experience-card" data-category="formatura">
+                        <div class="experience-image">
+                            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Formatura Ensino Médio">
+                        </div>
+                        <div class="experience-content">
+                            <span class="experience-type">Formatura</span>
+                            <h3 class="experience-title">Turma do Ensino Médio</h3>
+                            <div class="experience-date">
+                                <span class="material-icons">event</span>
+                                <span>17 de Dezembro, 2022</span>
+                            </div>
+                            <p class="experience-description">Nossa formatura do colégio foi épica graças à Banda Tempo Livre. Eles tocaram desde as músicas que marcaram nossa adolescência até os hits atuais, fazendo todos dançarem sem parar.</p>
+                            <div class="testimonial">
+                                <p>Foi a melhor noite das nossas vidas! Até os professores mais sérios estavam na pista de dança.</p>
+                                <p class="testimonial-author">- Turma 2022</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="no-results">
+                        <h3>Nenhuma experiência encontrada nesta categoria</h3>
+                        <p>Confira nossas outras experiências ou <a href="../index.html#agendar">agende sua própria experiência inesquecível</a>!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contatos" class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="../Logo Marca - BANDA TEMPO LIVRE PRODUÇÕES.png" alt="Logo da Banda Tempo Livre" class="footer-logo">
+                    <p class="footer-slogan">Música que transforma momentos em memórias.</p>
+                    <div class="footer-social">
+                        <h4>Siga-nos</h4>
+                        <div class="social-links">
+                            <a href="https://www.instagram.com/bandatempolivre/" target="_blank" rel="noopener noreferrer" aria-label="Instagram da Banda Tempo Livre">
+                                <img src="../insta.png" alt="Instagram">
+                            </a>
+                            <a href="https://www.facebook.com/showtempolivre" target="_blank" rel="noopener noreferrer" aria-label="Facebook da Banda Tempo Livre">
+                                <img src="../face.png" alt="Facebook">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-contact">
+                    <h4>Contato</h4>
+                    <ul class="contact-list">
+                        <li><span class="material-icons">phone</span> (14) 99761-2219</li>
+                        <li><span class="material-icons">phone</span> (14) 99750-4349</li>
+                        <li><span class="material-icons">email</span> contato@bandatempolivre.com</li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../sobre/index.html">Sobre</a></li>
+                        <li><a href="index.html">Experiências</a></li>
+                        <li><a href="../index.html#contatos">Contato</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Banda Tempo Livre. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Filtro de experiências
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-button');
+            const experienceCards = document.querySelectorAll('.experience-card');
+            const noResults = document.querySelector('.no-results');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Ativar botão selecionado
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    
+                    const filter = button.getAttribute('data-filter');
+                    let visibleCards = 0;
+                    
+                    // Filtrar cards
+                    experienceCards.forEach(card => {
+                        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                            card.style.display = 'block';
+                            visibleCards++;
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                    
+                    // Mostrar mensagem se não houver resultados
+                    if (visibleCards === 0) {
+                        noResults.style.display = 'block';
+                    } else {
+                        noResults.style.display = 'none';
+                    }
+                });
+            });
+            
+            // Animações ao scroll
+            const animateElements = document.querySelectorAll('.experience-card, .event-filter');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.classList.add('animate__fadeInUp');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            animateElements.forEach(element => {
+                element.style.opacity = 0;
+                observer.observe(element);
+            });
+        });
+    </script>
+</body>
+</html>
