@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tempo Livre Produções - Equipamentos para Eventos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <style>
+    :root {
+      --primary-color: #032342;
+      --secondary-color: #007bff;
+      --accent-color: #ff6b6b;
+      --light-color: #ffffff;
+      --dark-color: #121212;
+      --darker-color: #0a0a0a;
+      --text-color: #333333;
+      --text-light: #f8f9fa;
+      --gray-light: #e9ecef;
+      --transition: all 0.3s ease;
+      --border-radius: 8px;
+      --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --max-width: 1280px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--text-color);
+      background-color: var(--light-color);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    p{
+        color: white;
+    }
+
+    li{
+        color: white;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Header Styles */
+    .header {
+      background-color: var(--primary-color);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      box-shadow: var(--box-shadow);
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+      position: relative;
+    }
+
+    .logo img {
+      height: 60px;
+      transition: var(--transition);
+    }
+
+    .logo img:hover {
+      transform: scale(1.05);
+    }
+
+    .nav-list {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-list a {
+      color: var(--light-color);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: var(--transition);
+      position: relative;
+      padding: 0.5rem 0;
+    }
+
+    .nav-list a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--accent-color);
+      transition: var(--transition);
+    }
+
+    .nav-list a:hover::after {
+      width: 100%;
+    }
+
+    .nav-list a:hover {
+      color: var(--accent-color);
+    }
+
+    .cta-button {
+      background-color: var(--accent-color);
+      color: var(--light-color) !important;
+      padding: 0.5rem 1.5rem !important;
+      border-radius: var(--border-radius);
+      font-weight: 600 !important;
+    }
+
+    .cta-button:hover {
+      background-color: #ff5252;
+      transform: translateY(-2px);
+    }
+
+    .cta-button::after {
+      display: none;
+    }
+
+    /* Mobile Menu */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+      z-index: 1001;
+    }
+
+    .hamburger {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background-color: var(--light-color);
+      position: relative;
+      transition: var(--transition);
+    }
+
+    .hamburger::before,
+    .hamburger::after {
+      content: '';
+      position: absolute;
+      width: 25px;
+      height: 3px;
+      background-color: var(--light-color);
+      transition: var(--transition);
+    }
+
+    .hamburger::before {
+      top: -8px;
+    }
+
+    .hamburger::after {
+      top: 8px;
+    }
+
+    .hamburger.active {
+      background-color: transparent;
+    }
+
+    .hamburger.active::before {
+      transform: rotate(45deg);
+      top: 0;
+    }
+
+    .hamburger.active::after {
+      transform: rotate(-45deg);
+      top: 0;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-list {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 300px;
+        height: 100vh;
+        background-color: var(--primary-color);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        transition: var(--transition);
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .nav-list.active {
+        right: 0;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .container {
+        padding: 0 1rem;
+      }
+
+      .logo img {
+        height: 50px;
+      }
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+        url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center;
+      background-size: cover;
+      color: var(--light-color);
+      padding: 120px 0 100px;
+      text-align: center;
+      margin-top: 80px;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 30px;
+    }
+
+    /* Services Section */
+    .services {
+      padding: 80px 0;
+      background-color: var(--dark-color);
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-title h2 {
+      font-size: 2rem;
+      color: white;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background-color: var(--accent-color);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .service-card {
+      background-color: var(--primary-color);
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--box-shadow);
+      transition: var(--transition);
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .service-image {
+      height: 200px;
+      overflow: hidden;
+    }
+
+    .service-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    .service-card:hover .service-image img {
+      transform: scale(1.1);
+    }
+
+    .service-content {
+      padding: 20px;
+    }
+
+    .service-content h3 {
+      font-size: 1.5rem;
+      color: wheat;
+      margin-bottom: 10px;
+    }
+
+    .service-content p {
+      margin-bottom: 15px;
+    }
+
+    .service-features {
+      list-style: none;
+      margin-top: 15px;
+    }
+
+    .service-features li {
+      margin-bottom: 8px;
+      position: relative;
+      padding-left: 25px;
+    }
+
+    .service-features li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--accent-color);
+      font-weight: bold;
+    }
+
+    /* Footer */
+    .footer {
+      background-color: var(--primary-color);
+      color: var(--light-color);
+      padding: 50px 0 20px;
+      text-align: center;
+    }
+
+    .footer-logo img {
+      max-height: 60px;
+      margin-bottom: 20px;
+    }
+
+    .footer-contact p {
+      margin-bottom: 10px;
+    }
+
+    .footer-bottom {
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="container">
+      <nav class="navbar">
+        <a href="#" class="logo" aria-label="Logo da Tempo Livre Produções">
+          <img src="Denis 003.jpg" alt="Logo Tempo Livre Produções" />
+        </a>
+
+        <button class="menu-toggle" aria-label="Abrir menu">
+          <span class="hamburger"></span>
+        </button>
+
+        <ul class="nav-list">
+          <li><a href="../index.html">Home</a></li>
+              <li><a href="../sobre/index.html" aria-label="Sobre a Banda">Sobre</a></li>
+            <li><a href="../experiencias/index.html" aria-label="Experiências da Banda">Experiências</a></li>
+          <li><a href="#contact">Contatos</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h1>Soluções Completas para Seu Evento</h1>
+      <p>Equipamentos profissionais de som, iluminação e telão para transformar seu evento em uma experiência inesquecível</p>
+      <a href="#contact" class="cta-button">Solicitar Orçamento</a>
+    </div>
+  </section>
+
+  <section class="services" id="services">
+    <div class="container">
+      <div class="section-title">
+        <h2>Nossos Serviços</h2>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-image">
+            <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Som Profissional">
+          </div>
+          <div class="service-content">
+            <h3>Som Profissional</h3>
+            <p>Caixas de som, microfones sem fio, mesa de som digital e suporte técnico.</p>
+            <ul class="service-features">
+              <li>Qualidade sonora impecável</li>
+              <li>Ideal para shows, palestras e festas</li>
+              <li>Montagem e operação inclusas</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-image">
+                                <img src="https://images.unsplash.com/photo-1501612780327-45045538702b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Iluminação para Eventos">
+          </div>
+          <div class="service-content">
+            <h3>Iluminação Cênica</h3>
+            <p>Spots, moving heads, luzes de LED, controladas por software especializado.</p>
+            <ul class="service-features">
+              <li>Crie atmosferas impactantes</li>
+              <li>Ambientes personalizados</li>
+              <li>Eficiência e segurança</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="service-image">
+                                  <img src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Telão para Eventos">
+          </div>
+          <div class="service-content">
+            <h3>Telão com Projeção</h3>
+            <p>Projeção em alta definição com telas de diversos tamanhos para casamentos, congressos e shows.</p>
+            <ul class="service-features">
+              <li>Imagens nítidas e impactantes</li>
+              <li>Perfeito para vídeos e apresentações</li>
+              <li>Inclui projetor e operador</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer" id="contact">
+    <div class="container">
+      <div class="footer-logo">
+        <img src="Denis 003.jpg" alt="Logo Rodapé Tempo Livre" />
+      </div>
+      <div class="footer-contact">
+        <p>Entre em contato: <strong>contato@tempolivreproducoes.com.br</strong></p>
+        <p>WhatsApp: <strong>(11) 98765-4321</strong></p>
+        <p>Atendimento de segunda a sexta, das 9h às 18h</p>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Tempo Livre Produções. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const toggleButton = document.querySelector('.menu-toggle');
+    const navList = document.querySelector('.nav-list');
+    const hamburger = document.querySelector('.hamburger');
+
+    toggleButton.addEventListener('click', () => {
+      navList.classList.toggle('active');
+      hamburger.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>
